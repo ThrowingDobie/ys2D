@@ -30,7 +30,7 @@ TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 
 
-float g_Delta;
+
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -176,6 +176,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	RECT rc;
 
+
 	switch (message)
 	{
 	case WM_CREATE:
@@ -189,11 +190,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (g_pGameManager != nullptr)
 		{
 			g_pGameManager->Update(30.0f / 1000.0f);
-			if (Stage == 93 && g_Delta == 0)
+			if (Stage == 97 && g_Delta == 0)
 			{
-				g_pGameManager->OnCreate(hWnd, hInst);
 				g_Delta = 1;
+				g_pGameManager->OnCreate(hWnd, hInst);
 			}
+
+			
 			::InvalidateRect(hWnd, NULL, FALSE);
 		}
 		break;

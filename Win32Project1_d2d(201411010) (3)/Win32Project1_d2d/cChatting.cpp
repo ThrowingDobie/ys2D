@@ -2,6 +2,10 @@
 #include "cChatting.h"
 #include "Network.h"
 #include "cGameManager.h"
+#include <iostream>
+#include <queue>
+
+using namespace std;
 
 extern cGameManager g_pGameManager;
 
@@ -59,7 +63,13 @@ void cChatting::OnCommand(WPARAM wParam)
 		DestroyWindow(m_hEditWnd);
 		DestroyWindow(m_hBtnWnd);
 		DestroyWindow(m_hExitWnd);
-		//Stage = 1;
+		g_Delta = 0;
+		MouseMove = { 0, 0 };
+		MouseLD = { 0, 0 };
+		MouseRD = { 0, 0 };
+		MouseState = { 0, 0 };
+		Stage = 1;
+		//break;
 	}
 	}
 }
@@ -89,17 +99,17 @@ void cChatting::OnCreate(HWND hWnd, HINSTANCE hInst)
 		hInst,
 		NULL);
 
-	//m_hExitWnd = CreateWindow(L"button",
-	//	L"Send",
-	//	WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-	//	m_ChattingArea.left + BOX_PADDING + 510,
-	//	m_ChattingArea.top + BOX_PADDING + 20,
-	//	SEND_BTN_WIDTH,
-	//	SEND_BTN_HEIGHT,
-	//	hWnd,
-	//	(HMENU)CHAT_EXIT,
-	//	hInst,
-	//	NULL);
+	m_hExitWnd = CreateWindow(L"button",
+		L"Return Game",
+		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+		m_ChattingArea.left + BOX_PADDING + 510,
+		m_ChattingArea.top + BOX_PADDING + 50,
+		SEND_BTN_WIDTH,
+		SEND_BTN_HEIGHT,
+		hWnd,
+		(HMENU)CHAT_EXIT,
+		hInst,
+		NULL);
 
 	SetEnable(true);
 }
@@ -116,7 +126,6 @@ void cChatting::OnEnable()
 
 void cChatting::Render(cD2DRenderer& renderer)
 {
-
 	for (int i = 0; i < m_vecChatList.size(); ++i)
 	{
 
@@ -140,6 +149,7 @@ void cChatting::Render(cD2DRenderer& renderer)
 		}
 
 	}
+
 }
 
 void cChatting::ChatBoardRender(cD2DRenderer& renderer)

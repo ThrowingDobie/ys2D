@@ -64,6 +64,13 @@ extern BOOL bRight;
 extern BOOL bLeft;
 extern BOOL bUp;
 extern BOOL bDown;
+extern BOOL bSp;
+
+
+extern float g_Delta;
+
+extern BOOL KeepPotion;
+extern BOOL SetPotion;
 
 
 

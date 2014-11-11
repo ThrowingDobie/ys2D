@@ -192,6 +192,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 {
 	if (EquipMain != nullptr)
 	{
+		D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 		::D2D1_RECT_F dxArea = ::D2D1::RectF(0, 0, Resolution.x, Resolution.y);
 		::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 800, 600);
 		renderer.GetRenderTarget()->DrawBitmap(EquipMain, dxArea, 1.0f,
@@ -205,6 +206,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (ReturnLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = ReturnPos;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 117, 34);
 			renderer.GetRenderTarget()->DrawBitmap(ReturnLine, dxArea, 1.0f,
@@ -216,6 +218,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (ShortSword_imf != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = {0,0,800,600};
 			::D2D1_RECT_F srcArea = { 0, 0, 800, 600 };
 			renderer.GetRenderTarget()->DrawBitmap(ShortSword_imf, dxArea, 1.0f,
@@ -224,6 +227,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 		}
 		if (EquipSelectingLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Sword_1_Pos;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 45);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectingLine, dxArea, 1.0f,
@@ -235,6 +239,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (SmallShield_imf != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = { 0, 0, 800, 600 };
 			::D2D1_RECT_F srcArea = { 0, 0, 800, 600 };
 			renderer.GetRenderTarget()->DrawBitmap(SmallShield_imf, dxArea, 1.0f,
@@ -244,6 +249,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 
 		if (EquipSelectingLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Shield_1_Pos;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 45);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectingLine, dxArea, 1.0f,
@@ -255,6 +261,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (ChainMail_imf != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = { 0, 0, 800, 600 };
 			::D2D1_RECT_F srcArea = { 0, 0, 800, 600 };
 			renderer.GetRenderTarget()->DrawBitmap(ChainMail_imf, dxArea, 1.0f,
@@ -263,6 +270,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 		}
 		if (EquipSelectingLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Armor_1_Pos;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 45);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectingLine, dxArea, 1.0f,
@@ -274,6 +282,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (PowerRing_imf != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = { 0, 0, 800, 600 };
 			::D2D1_RECT_F srcArea = { 0, 0, 800, 600 };
 			renderer.GetRenderTarget()->DrawBitmap(PowerRing_imf, dxArea, 1.0f,
@@ -282,6 +291,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 		}
 		if (EquipSelectingLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Ring_1_Pos;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 45);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectingLine, dxArea, 1.0f,
@@ -294,6 +304,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (EquipSelectedLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Sword_1_Pos_1;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 48);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectedLine, dxArea, 1.0f,
@@ -305,6 +316,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (EquipSelectedLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Shield_1_Pos_1;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 48);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectedLine, dxArea, 1.0f,
@@ -316,6 +328,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (EquipSelectedLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Armor_1_Pos_1;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 48);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectedLine, dxArea, 1.0f,
@@ -327,6 +340,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 	{
 		if (EquipSelectedLine != nullptr)
 		{
+			D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 			::D2D1_RECT_F dxArea = Ring_1_Pos_1;
 			::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 45, 48);
 			renderer.GetRenderTarget()->DrawBitmap(EquipSelectedLine, dxArea, 1.0f,
@@ -337,6 +351,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 
 	if (ValueBar != nullptr)
 	{
+		D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 		::D2D1_RECT_F dxArea = ::D2D1::RectF(182, 108, 182+1.81 * 25 * PlayerAttack, 115);
 		::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 8, 8);
 		renderer.GetRenderTarget()->DrawBitmap(ValueBar, dxArea, 1.0f,
@@ -346,6 +361,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 
 	if (ValueBar != nullptr)
 	{
+		D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 		::D2D1_RECT_F dxArea = ::D2D1::RectF(182, 121, 182+1.81 * 25 * PlayerDefense, 128);
 		::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 8, 8);
 		renderer.GetRenderTarget()->DrawBitmap(ValueBar, dxArea, 1.0f,
@@ -355,6 +371,7 @@ void cEquip::Render(cD2DRenderer& renderer)
 
 	if (StrDef != nullptr)
 	{
+		D2D1_SIZE_U size = renderer.GetRenderTargetSize();
 		::D2D1_RECT_F dxArea = ::D2D1::RectF(145, 106, 145 + 22, 107 + 23);
 		::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 24, 23);
 		renderer.GetRenderTarget()->DrawBitmap(StrDef, dxArea, 1.0f,
