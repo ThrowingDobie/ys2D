@@ -83,6 +83,7 @@
     <ClInclude Include="cEquip.h" />
     <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cInterFace.h" />
+    <ClInclude Include="cInven.h" />
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMonster.h" />
     <ClInclude Include="cOpening.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="cEquip.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cInterFace.cpp" />
+    <ClCompile Include="cInven.cpp" />
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMonster.cpp" />
     <ClCompile Include="cOpening.cpp" />
