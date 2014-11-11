@@ -43,11 +43,6 @@ void cInterFace::Update()
 	//147.542.651.596
 	//100,500,700,800
 
-	if (MouseState.x == 0)
-	{
-		MouseLD = { 0, 0 };
-	}
-
 	if ((MouseMove.x >= 0) &&
 		(MouseMove.x <= 800) &&
 		(MouseMove.y >= 500) &&
@@ -70,13 +65,13 @@ void cInterFace::Update()
 	if ((MouseMove.x >= 160) && (MouseMove.x <= 238) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
 	{
 		MenuBar = 1;
-		//if (MouseLD.x) Stage = 92;
+		if (MouseLD.x) Stage = 92;
 	}
 	// Save
 	else if ((MouseMove.x >= 240) && (MouseMove.x <= 318) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
 	{
 		MenuBar = 2;
-		//if (MouseLD.x) Stage = 93;
+		if (MouseLD.x) Stage = 93;
 	}
 	// Equip 
 	else if ((MouseMove.x >= 320) && (MouseMove.x <= 398) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
@@ -95,33 +90,19 @@ void cInterFace::Update()
 	else if ((MouseMove.x >= 400) && (MouseMove.x <= 478) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
 	{
 		MenuBar = 4;
-		if (MouseLD.x)
-		{
-			Stage = 95;
-			MouseMove = { 0, 0 };
-			MouseLD = { 0, 0 };
-			MouseRD = { 0, 0 };
-			MouseState = { 0, 0 };
-		}
+		if (MouseLD.x) Stage = 95;
 	}
 	// Status
 	else if ((MouseMove.x >= 480) && (MouseMove.x <= 558) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
 	{
 		MenuBar = 5;
-		//if (MouseLD.x) Stage = 96;
+		if (MouseLD.x) Stage = 96;
 	}
 	// Option
 	else if ((MouseMove.x >= 560) && (MouseMove.x <= 638) && (MouseMove.y >= 555) && (MouseMove.y <= 585))
 	{
 		MenuBar = 6;
-		if (MouseLD.x)
-		{
-			Stage = 97;
-			MouseMove = { 0, 0 };
-			MouseLD = { 0, 0 };
-			MouseRD = { 0, 0 };
-			MouseState = { 0, 0 };
-		}
+		if (MouseLD.x) Stage = 97;
 	}
 	// MenuBar
 	else MenuBar = 0;
