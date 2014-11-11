@@ -5,6 +5,7 @@
 
 extern cGameManager g_pGameManager;
 
+
 cChatting::cChatting()
 {
 	m_ChattingArea.left = 100;
@@ -53,6 +54,13 @@ void cChatting::OnCommand(WPARAM wParam)
 			SetWindowText(m_hEditWnd, L"");
 	}
 		break;
+	case CHAT_EXIT:
+	{
+		DestroyWindow(m_hEditWnd);
+		DestroyWindow(m_hBtnWnd);
+		DestroyWindow(m_hExitWnd);
+		//Stage = 1;
+	}
 	}
 }
 void cChatting::OnCreate(HWND hWnd, HINSTANCE hInst)
@@ -80,6 +88,18 @@ void cChatting::OnCreate(HWND hWnd, HINSTANCE hInst)
 		(HMENU)BTN_CHAT_SEND,
 		hInst,
 		NULL);
+
+	//m_hExitWnd = CreateWindow(L"button",
+	//	L"Send",
+	//	WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+	//	m_ChattingArea.left + BOX_PADDING + 510,
+	//	m_ChattingArea.top + BOX_PADDING + 20,
+	//	SEND_BTN_WIDTH,
+	//	SEND_BTN_HEIGHT,
+	//	hWnd,
+	//	(HMENU)CHAT_EXIT,
+	//	hInst,
+	//	NULL);
 
 	SetEnable(true);
 }
