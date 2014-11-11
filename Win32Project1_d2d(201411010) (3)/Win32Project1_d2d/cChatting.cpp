@@ -16,7 +16,7 @@ cChatting::cChatting()
 	m_EditBox.top = m_ChattingArea.top + BOX_PADDING;
 	m_EditBox.right = m_EditBox.left + EDITBOX_WIDTH;
 	m_EditBox.bottom = m_EditBox.top + EDITBOX_HEIGHT;
-
+	int a;
 	m_nListStartX = m_ChattingArea.left + BOX_PADDING;
 	m_nListStartY = m_EditBox.bottom + BOX_PADDING;  // edit box 아래로 위치시킴.
 }
