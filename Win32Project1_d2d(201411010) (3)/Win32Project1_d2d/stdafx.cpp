@@ -54,4 +54,10 @@ BOOL bRight;
 BOOL bLeft;
 BOOL bUp;
 BOOL bDown;
+BOOL bSp;
+
+float g_Delta;
+
+BOOL KeepPotion;
+BOOL SetPotion;
 

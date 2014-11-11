@@ -10,6 +10,7 @@
 #include "cOpening.h"
 #include "cMonster.h"
 #include "cEquip.h"
+#include "cInven.h"
 //
 cBoard Board;
 cPlayer Player;
@@ -19,6 +20,7 @@ cOpening Opening;
 cMonster Monster;
 cMonster MonsterA;
 cEquip Equip;
+cInven Inven;
 
 cGameManager::cGameManager()
 {
@@ -86,15 +88,23 @@ void cGameManager::Update(float timeDelta)
 
 	}
 
-	if (Stage == 93)
-	{
-		m_Chatting.Update(timeDelta);
-	}
+
 
 	if (Stage == 94)
 	{
 		Equip.Update();
 		Equip.RenderUpdate();
+	}
+
+	if (Stage == 95)
+	{
+		Inven.Update();
+		Inven.RenderUpdate();
+	}
+
+	if (Stage == 97)
+	{
+		m_Chatting.Update(timeDelta);
 	}
 
 	if (Stage == 99)
@@ -144,15 +154,22 @@ void cGameManager::Render(cD2DRenderer& renderer)
 		InterFace.MenuBarRender(renderer);
 	}
 
-	if (Stage == 93)
-	{
-		m_Chatting.ChatBoardRender(renderer);
-		m_Chatting.Render(renderer);
-	}
+
 
 	if (Stage == 94)
 	{
 		Equip.Render(renderer);
+	}
+
+	if (Stage == 95)
+	{
+		Inven.Render(renderer);
+	}
+
+	if (Stage == 97)
+	{
+		m_Chatting.ChatBoardRender(renderer);
+		m_Chatting.Render(renderer);
 	}
 
 
@@ -178,6 +195,7 @@ void cGameManager::LoadImages(cD2DRenderer& renderer, HWND hWnd)
 	}
 
 	Equip.LoadImages(renderer, hWnd);
+	Inven.LoadImages(renderer, hWnd);
 	m_Chatting.LoadImages(renderer, hWnd);
 
 

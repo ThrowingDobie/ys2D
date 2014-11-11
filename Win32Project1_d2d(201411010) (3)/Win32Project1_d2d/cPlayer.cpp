@@ -69,6 +69,8 @@ void cPlayer::KeyDown(DWORD dwKey)
 		bDown = true;
 	if (dwKey == VK_UP)
 		bUp = true;
+	if (dwKey == VK_SPACE)
+		bSp = true;
 }
 
 void cPlayer::KeyUp(DWORD dwKey)
@@ -81,6 +83,8 @@ void cPlayer::KeyUp(DWORD dwKey)
 		bDown = false;
 	if (dwKey == VK_UP)
 		bUp = false;
+	if (dwKey == VK_SPACE)
+		bSp = false;
 }
 
 void cPlayer::Update()
@@ -112,7 +116,19 @@ void cPlayer::Update()
 	}
 	else delta = 0;
 
-
+	if (SetPotion)
+	{
+		if (bSp)
+		{
+			PlayerHp += 50;
+			if (PlayerHp > 100)
+			{
+				PlayerHp = 100;
+			}
+			SetPotion = false;
+			KeepPotion = false;
+		}
+	}
 }
 
 
