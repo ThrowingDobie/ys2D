@@ -5,7 +5,7 @@
 #define BTN_CHAT_SEND 1
 #define EIDT_CHAT_INPUT 2
 #define BOX_PADDING 5
-#define EDITBOX_WIDTH 180
+#define EDITBOX_WIDTH 500
 #define EDITBOX_HEIGHT 25
 #define SEND_BTN_WIDTH 95
 #define SEND_BTN_HEIGHT 25
@@ -27,6 +27,10 @@ public:
 	}
 	void OnCreate(HWND hWnd, HINSTANCE hInst);
 	void OnChat(char* packet, int nRecv);
+
+	void ChatBoardRender(cD2DRenderer&renderer);
+	void LoadImages(cD2DRenderer& renderer, HWND hWnd);
+
 private:
 	void OnDisable();
 	void OnEnable();
@@ -42,6 +46,8 @@ private:
 	RECT m_SendBtn;
 	int m_nListStartX;
 	int m_nListStartY;
+
+	ID2D1Bitmap* ChatBoard;
 
 };
 

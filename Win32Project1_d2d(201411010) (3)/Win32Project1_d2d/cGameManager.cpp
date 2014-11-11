@@ -146,6 +146,7 @@ void cGameManager::Render(cD2DRenderer& renderer)
 
 	if (Stage == 93)
 	{
+		m_Chatting.ChatBoardRender(renderer);
 		m_Chatting.Render(renderer);
 	}
 
@@ -177,6 +178,7 @@ void cGameManager::LoadImages(cD2DRenderer& renderer, HWND hWnd)
 	}
 
 	Equip.LoadImages(renderer, hWnd);
+	m_Chatting.LoadImages(renderer, hWnd);
 
 
 }

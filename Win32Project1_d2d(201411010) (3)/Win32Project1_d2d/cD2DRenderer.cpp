@@ -46,12 +46,12 @@ void cD2DRenderer::InitializeD2D(void)
 
 
 	m_pDWriteFactory->CreateTextFormat(
-		L"Gabriola",                // Font family name.
+		L"±¼¸²",                // Font family name.
 		NULL,                       // Font collection (NULL sets it to use the system font collection).
 		DWRITE_FONT_WEIGHT_REGULAR,
 		DWRITE_FONT_STYLE_NORMAL,
 		DWRITE_FONT_STRETCH_NORMAL,
-		20.0f,
+		15.0f,
 		L"en-us",
 		&m_pTextFormat
 		);
@@ -91,7 +91,7 @@ void cD2DRenderer::InitializeRT(HWND hWnd)
 
 	// Brush
 	hr = m_ipRT->CreateSolidColorBrush(
-		D2D1::ColorF(D2D1::ColorF::Black),
+		D2D1::ColorF(D2D1::ColorF::White),
 		&m_pBlackBrush
 		);
 

@@ -8,23 +8,32 @@ extern cGameManager g_pGameManager;
 cChatting::cChatting()
 {
 	m_ChattingArea.left = 100;
-	m_ChattingArea.top = 100;
+	m_ChattingArea.top = 500;
 	m_ChattingArea.right = m_ChattingArea.left + 300;
 	m_ChattingArea.bottom = m_ChattingArea.top + 500;
+
+	//m_EditBox.left = m_ChattingArea.left + BOX_PADDING;
+	//m_EditBox.top = m_ChattingArea.top + BOX_PADDING;
+	//m_EditBox.right = m_EditBox.left + EDITBOX_WIDTH;
+	//m_EditBox.bottom = m_EditBox.top + EDITBOX_HEIGHT;
 
 	m_EditBox.left = m_ChattingArea.left + BOX_PADDING;
 	m_EditBox.top = m_ChattingArea.top + BOX_PADDING;
 	m_EditBox.right = m_EditBox.left + EDITBOX_WIDTH;
 	m_EditBox.bottom = m_EditBox.top + EDITBOX_HEIGHT;
-	int a;
-	m_nListStartX = m_ChattingArea.left + BOX_PADDING;
-	m_nListStartY = m_EditBox.bottom + BOX_PADDING;  // edit box 아래로 위치시킴.
+
+	//m_nListStartX = m_ChattingArea.left + BOX_PADDING;
+	//m_nListStartY = m_EditBox.bottom + BOX_PADDING;  // edit box 아래로 위치시킴.
+
+	ChatBoard = nullptr;
 }
 
 
 cChatting::~cChatting()
 {
 	m_vecChatList.clear();
+
+	SafeRelease(ChatBoard);
 }
 
 void cChatting::OnCommand(WPARAM wParam)
@@ -63,7 +72,7 @@ void cChatting::OnCreate(HWND hWnd, HINSTANCE hInst)
 	m_hBtnWnd = CreateWindow(L"button",
 		L"Send",
 		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-		m_ChattingArea.left + BOX_PADDING + 190,
+		m_ChattingArea.left + BOX_PADDING + 510,
 		m_ChattingArea.top + BOX_PADDING, 
 		SEND_BTN_WIDTH, 
 		SEND_BTN_HEIGHT,
@@ -87,9 +96,6 @@ void cChatting::OnEnable()
 
 void cChatting::Render(cD2DRenderer& renderer)
 {
-	//Rectangle(hdc, m_ChattingArea.left, m_ChattingArea.top, m_ChattingArea.right, m_ChattingArea.bottom);
-
-
 
 	for (int i = 0; i < m_vecChatList.size(); ++i)
 	{
@@ -100,9 +106,9 @@ void cChatting::Render(cD2DRenderer& renderer)
 
 			D2D1_RECT_F layoutRect = D2D1::RectF(
 				100,
-				200+i*50,
-				500,
-				300 + i * 50
+				50 + i * 20, 
+				700,
+				300 + i * 20
 				);
 
 			renderer.GetRenderTarget()->DrawTextW(
@@ -114,14 +120,24 @@ void cChatting::Render(cD2DRenderer& renderer)
 		}
 
 	}
-	//packetA[nRecvA] = '\0';
-	//wchar_t wBufA[1024];
-	//MultiByteToWideChar(CP_ACP, 0, packetA, -1, wBufA, 1024);
-	//chatA = wBuf;
-	//m_vecChatList.push_back(chatA);
+}
 
-	
+void cChatting::ChatBoardRender(cD2DRenderer& renderer)
+{
+	if (ChatBoard != nullptr);
+	{
+		D2D1_SIZE_U size = renderer.GetRenderTargetSize();
+		::D2D1_RECT_F dxArea = ::D2D1::RectF(0, 0, Resolution.x, Resolution.y);
+		::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, 800.0f, 600.0f);
+		renderer.GetRenderTarget()->DrawBitmap(ChatBoard, dxArea, 1.0f,
+			D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
+			srcArea);
+	}
+}
 
+void cChatting::LoadImages(cD2DRenderer& renderer, HWND hWnd)
+{
+	ChatBoard = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Chat/ChatBoard.png");
 }
 
 void cChatting::OnChat(char* packet, int nRecv)
@@ -134,6 +150,6 @@ void cChatting::OnChat(char* packet, int nRecv)
 	std::wstring chat = wBuf;
 	m_vecChatList.push_back(chat);
 	//윈도우 타이틀에 한번 뿌려본다.
-	SetWindowText(g_hWnd, chat.c_str());
+	//SetWindowText(g_hWnd, chat.c_str());
 
 }
