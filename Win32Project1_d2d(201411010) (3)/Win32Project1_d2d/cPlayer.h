@@ -39,6 +39,7 @@ private:
 	int PlayerWay;
 	int CrushOn;
 	int State[10];
+	int NPCState[3];
 	int FirstCrush;
 
 	ID2D1Bitmap* PlayerEffect;

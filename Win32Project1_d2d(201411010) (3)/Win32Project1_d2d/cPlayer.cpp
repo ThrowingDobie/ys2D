@@ -71,6 +71,8 @@ void cPlayer::KeyDown(DWORD dwKey)
 		bUp = true;
 	if (dwKey == VK_SPACE)
 		bSp = true;
+	if (dwKey == 13)
+		bEnt = true;
 }
 
 void cPlayer::KeyUp(DWORD dwKey)
@@ -85,6 +87,8 @@ void cPlayer::KeyUp(DWORD dwKey)
 		bUp = false;
 	if (dwKey == VK_SPACE)
 		bSp = false;
+	if (dwKey == 13)
+		bEnt = false;
 }
 
 void cPlayer::Update()
@@ -95,6 +99,9 @@ void cPlayer::Update()
 	TileTypeD = MainTile[((PlayerPos.x) / TileSize.x)][(PlayerPos.y + 10) / TileSize.y];
 
 	g_pGameManager->GetCrushMonster(State);
+	g_pGameManager->GetCrushNPC(NPCState);
+
+
 
 	for (int a = 0; a < 10; a++)
 	{
@@ -304,7 +311,7 @@ void cPlayer::PlayerMove()
 	if (CrushOn == 0) PlayerSpeed = 10;
 	else if (CrushOn == 1) PlayerSpeed = 5;
 	else if (CrushOn == 2) PlayerSpeed = 8;
-
+	if (NPCState[0] == 1) PlayerSpeed = 0;
 	if (bLeft)
 	{
 		if (TileTypeL) Temp(PlayerPos.x, PlayerPos.y);
@@ -543,7 +550,7 @@ void cPlayer::PlayerHpRender(cD2DRenderer& renderer)
 {
 
 	WCHAR str[128];
-	wsprintf(str, L"0,1,2,3 = %d, %d, %d, %d", CrushOn, State[0], State[1],delta);
+	wsprintf(str, L"0,1,2,3 = %d, %d, %d, %d", CrushOn, State[0], State[1],NPCState[0]);
 	UINT32 cTextLength_c = (UINT32)wcslen(str);
 
 	D2D1_RECT_F layoutRectc = D2D1::RectF(830, 150, 1130, 250);

@@ -65,6 +65,7 @@ extern BOOL bLeft;
 extern BOOL bUp;
 extern BOOL bDown;
 extern BOOL bSp;
+extern BOOL bEnt;
 
 
 extern float g_Delta;

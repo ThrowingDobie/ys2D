@@ -133,7 +133,9 @@ void cMapObject::DataRender(cD2DRenderer& renderer)
 		renderer.GetBrush());
 
 	str[128];
-	wsprintf(str, L"Screen = %d,%d", Screen.x, Screen.y);
+	wsprintf(str, L"Screen = %d,%d",
+		(MouseMove.x + g_Camera.x) / TileSize.x,
+		(MouseMove.y + g_Camera.y) / TileSize.y);
 	UINT32 cTextLength_b = (UINT32)wcslen(str);
 
 	D2D1_RECT_F layoutRectb = D2D1::RectF(830, 100, 1130, 200);

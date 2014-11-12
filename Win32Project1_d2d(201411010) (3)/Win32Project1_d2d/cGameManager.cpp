@@ -11,6 +11,7 @@
 #include "cMonster.h"
 #include "cEquip.h"
 #include "cInven.h"
+#include "cNPC.h"
 //
 cBoard Board;
 cPlayer Player;
@@ -21,6 +22,7 @@ cMonster Monster;
 cMonster MonsterA;
 cEquip Equip;
 cInven Inven;
+cNPC NPC;
 
 cGameManager::cGameManager()
 {
@@ -30,7 +32,7 @@ cGameManager::cGameManager()
 	Resolution = { 800, 600 };
 
 	Monster.MonsterPos = { 1250, 1200 };
-	MonsterA.MonsterPos = { 700, 700 };
+	MonsterA.MonsterPos = { 200, 200 };
 }
 
 
@@ -64,6 +66,11 @@ void cGameManager::GetCrushMonster(int* arr)
 	arr[1] = MonsterA.GetCrushOn_t(1);
 }
 
+void cGameManager::GetCrushNPC(int* arr)
+{
+	arr[0] = NPC.GetCrushOn(0);
+}
+
 void cGameManager::Update(float timeDelta)
 {
 	if (Stage == 0)
@@ -81,6 +88,7 @@ void cGameManager::Update(float timeDelta)
 		Monster.MonsterMove();
 		MonsterA.Update();
 		MonsterA.MonsterMove();
+		NPC.Update();
 	}
 
 	if (Stage == 2)
@@ -131,6 +139,7 @@ void cGameManager::Render(cD2DRenderer& renderer)
 		Board.Render(renderer);
 		Player.Render(renderer);
 
+		NPC.Render(renderer);
 
 		MapObject.FrontBuildingRender(renderer);
 		MapObject.Render(renderer);
@@ -144,11 +153,15 @@ void cGameManager::Render(cD2DRenderer& renderer)
 
 		InterFace.Render(renderer);
 
+
+
 		Monster.MonsterHpRender(renderer);
 		Monster.EffectRender(renderer);
 		MonsterA.MonsterHpRender(renderer);
 		MonsterA.EffectRender(renderer);
 		//
+
+		NPC.SpeechRender(renderer);
 
 		Player.PlayerHpRender(renderer);
 		InterFace.MenuBarRender(renderer);
@@ -197,6 +210,8 @@ void cGameManager::LoadImages(cD2DRenderer& renderer, HWND hWnd)
 	Equip.LoadImages(renderer, hWnd);
 	Inven.LoadImages(renderer, hWnd);
 	m_Chatting.LoadImages(renderer, hWnd);
+
+	NPC.LoadImages(renderer, hWnd);
 
 
 }

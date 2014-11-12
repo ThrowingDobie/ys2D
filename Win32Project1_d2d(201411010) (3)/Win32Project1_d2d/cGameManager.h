@@ -25,6 +25,7 @@ public:
 	void Update(float timeDelta);
 	void LoadImages(cD2DRenderer& renderer, HWND hWnd);
 	void GetCrushMonster(int* arr);
+	void GetCrushNPC(int* arr);
 
 	// Ã¤ÆÃ
 	void OnCreate(HWND hWnd, HINSTANCE hInst);

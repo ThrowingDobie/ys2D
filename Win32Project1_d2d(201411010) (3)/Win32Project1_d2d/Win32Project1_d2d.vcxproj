@@ -86,6 +86,7 @@
     <ClInclude Include="cInven.h" />
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMonster.h" />
+    <ClInclude Include="cNPC.h" />
     <ClInclude Include="cOpening.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="Network.h" />
@@ -104,6 +105,7 @@
     <ClCompile Include="cInven.cpp" />
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMonster.cpp" />
+    <ClCompile Include="cNPC.cpp" />
     <ClCompile Include="cOpening.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="Network.cpp" />

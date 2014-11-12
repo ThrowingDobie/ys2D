@@ -55,6 +55,7 @@ BOOL bLeft;
 BOOL bUp;
 BOOL bDown;
 BOOL bSp;
+BOOL bEnt;
 
 float g_Delta;
 
