@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cMapObject.h"
 
+extern cGameManager* g_pGameManager;
 
 cMapObject::cMapObject()
 {
@@ -10,12 +11,14 @@ cMapObject::cMapObject()
 	StoneBuilding_s = nullptr;
 	StoneBuilding_b = nullptr;
 	Fence = nullptr;
+	Fence_Event = nullptr;
 
 	rWoodenBuilding_s = { 0, 0, 384, 280 };
 	rWoodenBuilding_b;
 	rStoneBuilding_s = { 0, 0, 384, 284 };
 	rStoneBuilding_b = { 0, 0, 865, 383 };
 	rFence = { 0, 0, 224, 233 };
+	rFence_Event = { 0, 0, 224, 233 };
 }
 
 
@@ -50,6 +53,8 @@ void cMapObject::Update()
 			MainTile[A][B] = 0;
 		}
 	}
+
+	g_pGameManager->GetCrushNPC(NPC_Event);
 
 
 }
@@ -193,7 +198,17 @@ void cMapObject::FrontBuildingRender(cD2DRenderer& renderer)
 	Build(renderer, StoneBuilding_s, rStoneBuilding_s, 205, 600);
 	Build(renderer, StoneBuilding_s, rStoneBuilding_s, 945, 280);
 	Build(renderer, StoneBuilding_b, rStoneBuilding_b, 130, 1020);
-	Build(renderer, Fence, rFence, 1205, 1105);
+
+	if (NPC_Event[0] == 0)
+	{
+		Build(renderer, Fence, rFence, 1205, 1105);
+	}
+	if (NPC_Event[0] == 1)
+	{
+		{
+			Build(renderer, Fence_Event, rFence_Event, 1205, 1105);
+		}
+	}
 }
 void cMapObject::BackBuildingRender(cD2DRenderer& renderer)
 {
@@ -207,6 +222,7 @@ void cMapObject::LoadImages(cD2DRenderer& renderer, HWND hWnd)
 	StoneBuilding_s = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/StoneBuilding_s.png");
 	StoneBuilding_b = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/StoneBuilding_b.png");
 	Fence = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/Fence.png");
+	Fence_Event = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/Fence_Event.png");
 	::InvalidateRect(hWnd, NULL, TRUE);
 }
 
