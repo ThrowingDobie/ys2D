@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cMapObject.h"
 
+extern cGameManager* g_pGameManager;
 
 cMapObject::cMapObject()
 {
@@ -10,12 +11,14 @@ cMapObject::cMapObject()
 	StoneBuilding_s = nullptr;
 	StoneBuilding_b = nullptr;
 	Fence = nullptr;
+	Fence_Event = nullptr;
 
 	rWoodenBuilding_s = { 0, 0, 384, 280 };
 	rWoodenBuilding_b;
 	rStoneBuilding_s = { 0, 0, 384, 284 };
 	rStoneBuilding_b = { 0, 0, 865, 383 };
 	rFence = { 0, 0, 224, 233 };
+	rFence_Event = { 0, 0, 224, 233 };
 }
 
 
@@ -51,6 +54,8 @@ void cMapObject::Update()
 		}
 	}
 
+	g_pGameManager->GetCrushNPC(NPC_Event);
+
 
 }
 
@@ -71,37 +76,37 @@ void cMapObject::Render(cD2DRenderer& renderer)
 			srcArea);
 	}
 
-	int a, b = 0;
-	RECT RC;
-	RC.left = g_Camera.x / TileSize.x;
-	RC.right = g_Camera.x / TileSize.x + (Resolution.x / TileSize.x);
-	RC.top = g_Camera.y / TileSize.y;
-	RC.bottom = g_Camera.y / TileSize.y + (Resolution.y / TileSize.y);
+	//int a, b = 0;
+	//RECT RC;
+	//RC.left = g_Camera.x / TileSize.x;
+	//RC.right = g_Camera.x / TileSize.x + (Resolution.x / TileSize.x);
+	//RC.top = g_Camera.y / TileSize.y;
+	//RC.bottom = g_Camera.y / TileSize.y + (Resolution.y / TileSize.y);
 
-	for (b = 0; b < StageA_Size.y / TileSize.y; b++)
-	{
-		for (a = 0; a < StageA_Size.x / TileSize.y; a++)
-		{
-			if (a > RC.left && a < RC.right && b > RC.top && b < RC.bottom)
-			{
-				if (MainTile[a][b] != 0)
-				{
-					if (TileLine != nullptr);
-					{
-						::D2D1_RECT_F dxArea = ::D2D1::RectF(
-							Screen.x + a*TileSize.x,
-							Screen.y + b*TileSize.y,
-							Screen.x + a*TileSize.x + TileSize.x,
-							Screen.y + b*TileSize.y + TileSize.y);
-						::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, TileSize.x, TileSize.y);
-						renderer.GetRenderTarget()->DrawBitmap(TileLine, dxArea, 1.0f,
-							D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
-							srcArea);
-					}
-				}
-			}
-		}
-	}
+	//for (b = 0; b < StageA_Size.y / TileSize.y; b++)
+	//{
+	//	for (a = 0; a < StageA_Size.x / TileSize.y; a++)
+	//	{
+	//		if (a > RC.left && a < RC.right && b > RC.top && b < RC.bottom)
+	//		{
+	//			if (MainTile[a][b] != 0)
+	//			{
+	//				if (TileLine != nullptr);
+	//				{
+	//					::D2D1_RECT_F dxArea = ::D2D1::RectF(
+	//						Screen.x + a*TileSize.x,
+	//						Screen.y + b*TileSize.y,
+	//						Screen.x + a*TileSize.x + TileSize.x,
+	//						Screen.y + b*TileSize.y + TileSize.y);
+	//					::D2D1_RECT_F srcArea = ::D2D1::RectF(0, 0, TileSize.x, TileSize.y);
+	//					renderer.GetRenderTarget()->DrawBitmap(TileLine, dxArea, 1.0f,
+	//						D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
+	//						srcArea);
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 void cMapObject::DataRender(cD2DRenderer& renderer)
@@ -193,7 +198,17 @@ void cMapObject::FrontBuildingRender(cD2DRenderer& renderer)
 	Build(renderer, StoneBuilding_s, rStoneBuilding_s, 205, 600);
 	Build(renderer, StoneBuilding_s, rStoneBuilding_s, 945, 280);
 	Build(renderer, StoneBuilding_b, rStoneBuilding_b, 130, 1020);
-	Build(renderer, Fence, rFence, 1205, 1105);
+
+	if (NPC_Event[0] == 0)
+	{
+		Build(renderer, Fence, rFence, 1205, 1105);
+	}
+	if (NPC_Event[0] == 1)
+	{
+		{
+			Build(renderer, Fence_Event, rFence_Event, 1205, 1105);
+		}
+	}
 }
 void cMapObject::BackBuildingRender(cD2DRenderer& renderer)
 {
@@ -207,6 +222,7 @@ void cMapObject::LoadImages(cD2DRenderer& renderer, HWND hWnd)
 	StoneBuilding_s = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/StoneBuilding_s.png");
 	StoneBuilding_b = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/StoneBuilding_b.png");
 	Fence = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/Fence.png");
+	Fence_Event = renderer.CreateD2DBitmapFromFile(hWnd, L"Images/Object/Fence_Event.png");
 	::InvalidateRect(hWnd, NULL, TRUE);
 }
 

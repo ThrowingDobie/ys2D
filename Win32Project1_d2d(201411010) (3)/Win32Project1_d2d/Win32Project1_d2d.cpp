@@ -73,6 +73,10 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	g_pGameManager->LoadImages(g_d2dRender, g_hWnd);
 	g_pGameManager->Load();
 
+	MainTile[64][57] = 1;
+	MainTile[65][57] = 1;
+	MainTile[66][57] = 1;
+	MainTile[67][57] = 1;
 
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WIN32PROJECT1_D2D));
