@@ -15,8 +15,7 @@ public:
 	cNPC();
 	~cNPC();
 
-	int NPC_Host_E;
-	int NPC_Host_Event(int a);
+	int GetCrushOn(int a);
 	int CrushOn;
 	int SpeechDelay;
 	float delta;

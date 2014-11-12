@@ -99,6 +99,8 @@ void cPlayer::Update()
 	TileTypeD = MainTile[((PlayerPos.x) / TileSize.x)][(PlayerPos.y + 10) / TileSize.y];
 
 	g_pGameManager->GetCrushMonster(State);
+	g_pGameManager->GetCrushNPC(NPCState);
+
 
 
 	for (int a = 0; a < 10; a++)
@@ -309,6 +311,7 @@ void cPlayer::PlayerMove()
 	if (CrushOn == 0) PlayerSpeed = 10;
 	else if (CrushOn == 1) PlayerSpeed = 5;
 	else if (CrushOn == 2) PlayerSpeed = 8;
+	if (NPCState[0] == 1) PlayerSpeed = 0;
 	if (bLeft)
 	{
 		if (TileTypeL) Temp(PlayerPos.x, PlayerPos.y);

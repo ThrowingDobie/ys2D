@@ -20,9 +20,9 @@ cNPC::~cNPC()
 	SafeRelease(NPC_Host_B);
 }
 
-int cNPC::NPC_Host_Event(int a)
+int cNPC::GetCrushOn(int a)
 {
-	return NPC_Host_E;
+	return CrushOn;
 }
 
 void cNPC::Update()
@@ -41,8 +41,6 @@ void cNPC::Update()
 			MainTile[64][57] = 0;
 			MainTile[65][57] = 0;
 			MainTile[66][57] = 0;
-			MainTile[67][57] = 0;
-			NPC_Host_E = 1;
 		}
 	}
 

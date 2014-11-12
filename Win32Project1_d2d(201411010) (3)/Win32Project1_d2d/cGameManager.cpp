@@ -33,8 +33,6 @@ cGameManager::cGameManager()
 
 	Monster.MonsterPos = { 1250, 1200 };
 	MonsterA.MonsterPos = { 200, 200 };
-
-
 }
 
 
@@ -70,7 +68,7 @@ void cGameManager::GetCrushMonster(int* arr)
 
 void cGameManager::GetCrushNPC(int* arr)
 {
-	arr[0] = NPC.NPC_Host_Event(0);
+	arr[0] = NPC.GetCrushOn(0);
 }
 
 void cGameManager::Update(float timeDelta)

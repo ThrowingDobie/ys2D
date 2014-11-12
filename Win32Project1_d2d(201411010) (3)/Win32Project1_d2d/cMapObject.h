@@ -9,18 +9,14 @@ class cMapObject
 	ID2D1Bitmap*	StoneBuilding_s;
 	ID2D1Bitmap*	StoneBuilding_b;
 	ID2D1Bitmap*	Fence;
-	ID2D1Bitmap*	Fence_Event;
 
 	D2D1_RECT_F rWoodenBuilding_s;
 	D2D1_RECT_F rWoodenBuilding_b;
 	D2D1_RECT_F rStoneBuilding_s;
 	D2D1_RECT_F rStoneBuilding_b;
 	D2D1_RECT_F rFence;
-	D2D1_RECT_F rFence_Event;
 
 	int x = 0;
-
-	int NPC_Event[3];
 
 public:
 	cMapObject();
